@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Redirect</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var redirects = [
+                "image0.jpg",  // 나머지가 0일 때 리다이렉트할 페이지
+                "image1.jpg"   // 나머지가 1일 때 리다이렉트할 페이지
+            ];
+
+            var today = new Date();
+            var day = today.getDate();
+
+            var remainder = day % 2;
+            var selectedPage = redirects[remainder];
+
+            window.location.href = selectedPage;
+        });
+    </script>
+</head>
+<body>
+    <h1>Dynamic Redirect Example</h1>
+    <p>If you see this message, JavaScript might be disabled in your browser.</p>
+</body>
+</html>
