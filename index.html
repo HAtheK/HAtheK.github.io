@@ -29,5 +29,22 @@
 <body>
     <h1>TW_3407신</h1>
     <p>This page's Open Graph image changes based on the date.</p>
+    <img id="main_img"  src='default_image'>
+	<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var images = [
+                "image0.jpg",  // 나머지가 0일 때 사용할 이미지
+                "image1.jpg"   // 나머지가 1일 때 사용할 이미지
+            ];
+
+            var today = new Date();
+            var day = today.getDate();
+
+            var remainder = day % 2;
+            var selectedImage = images[remainder];
+
+            document.getElementById("main_img").setAttribute("content", selectedImage);
+        });
+    </script>
 </body>
 </html>
