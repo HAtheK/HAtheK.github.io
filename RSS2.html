@@ -19,15 +19,10 @@
             var selectedImage = images[remainder];
 	    var selectedRss = rss[remainder];
 
-        	var meta = document.createElement('meta');
-            meta.name = "keywords";	
-            meta.content = "keyword1, keyword2, keyword3";
-            document.getElementsByTagName('head')[0].appendChild(meta);
-
         var meta = document.createElement('meta');
             meta.property ="og:image";
             meta.content = selectedImage;
-            document.getElementsByTagName('head')[0].appendChild(meta);
+            document.getElementsByTagName('head')[0].appendChild(meta);});
 	  
 </script>    
 <head>
