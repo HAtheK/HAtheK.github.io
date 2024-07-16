@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" id="og-tit" content="TW_3407신">
+    <meta property="og:description" id="og-desc" content="오늘의 자원지는">
+    <meta property="og:image" id="og-image">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var images = [
                 "image0.jpg",  // 나머지가 0일 때 사용할 이미지
                 "image1.jpg"   // 나머지가 1일 때 사용할 이미지
+            ];
+		
+	    var rss = [
+                "오늘의 자원지는 기름(Oil Field)",  // 나머지가 0일 때 사용할 이미지
+                "오늘의 자원지는 옥수수(Farmland)"   // 나머지가 1일 때 사용할 이미지
             ];
 
             var today = new Date();
@@ -13,15 +23,14 @@
 
             var remainder = day % 2;
             var selectedImage = images[remainder];
+	    var selectedRss = rss[remainder];
 
-            document.getElementById("og-image").setAttribute("content", selectedImage);
+	    document.getElementById("og-tit").setAttribute("content", today);
+            document.getElementById("og-desc").setAttribute("content", selectedRss);
+	    document.getElementById("og-image").setAttribute("content", selectedImage);
         });
     </script>    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="TW_3407신">
-    <meta property="og:description" content="오늘의 자원지">
-    <meta property="og:image" id="og-image">
+
 
     <title>Open Graph Dynamic Image</title>
 
@@ -42,7 +51,7 @@
 
             var remainder = day % 2;
             var selectedImage = images[remainder];
-
+	   
             document.getElementById("main_img").setAttribute("src", selectedImage);
         });
     </script>
