@@ -1,46 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var images = [
-                "image0.jpg",  // 나머지가 0일 때 사용할 이미지
-                "image1.jpg"   // 나머지가 1일 때 사용할 이미지
-            ];
-		
-	    var rss = [
-                "오늘의 자원지는 기름(Oil Field)",  // 나머지가 0일 때 사용할 이미지
-                "오늘의 자원지는 옥수수(Farmland)"   // 나머지가 1일 때 사용할 이미지
-            ];
-
-            var today = new Date();
-            var day = today.getDate();
-
-            var remainder = day % 2;
-            var selectedImage = images[remainder];
-	    var selectedRss = rss[remainder];
-
-        var meta = document.createElement('meta');
-            meta.property ="og:image";
-            meta.content = selectedImage;
-            document.getElementsByTagName('head')[0].appendChild(meta);});
-	  
-</script>    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   
-
-
+    <meta property="og:title" content="Dynamic Open Graph Image">
+    <meta property="og:description" content="This page dynamically changes the Open Graph image based on the date.">
+    <meta property="og:image" id="og-image" content="">
     <title>Open Graph Dynamic Image</title>
-
-</head>
-<body>
-    <h1>TW_3407신</h1>
-    <p>This page's Open Graph image changes based on the date.</p>
-    <img id="main_img">
-	<script>
-        document.addEventListener("DOMContentLoaded", function() {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
             var images = [
                 "image0.jpg",  // 나머지가 0일 때 사용할 이미지
                 "image1.jpg"   // 나머지가 1일 때 사용할 이미지
@@ -48,12 +17,15 @@
 
             var today = new Date();
             var day = today.getDate();
-
-            var remainder = day % 2;
+            var remainder = Math.floor((day - 1) / 2) % images.length;
             var selectedImage = images[remainder];
-	   
-            document.getElementById("main_img").setAttribute("src", selectedImage);
+
+            $('#og-image').attr('content', selectedImage);
         });
     </script>
+</head>
+<body>
+    <h1>Open Graph Image Example</h1>
+    <p>This page's Open Graph image changes based on the date.</p>
 </body>
 </html>
