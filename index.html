@@ -3,57 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" id="og-tit" content="TW_3407신">
-    <meta property="og:description" id="og-desc" content="오늘의 자원지는">
-    <meta property="og:image" id="og-image">
+    <title>Open Graph Dynamic Image</title>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        (function() {
             var images = [
-                "image0.jpg",  // 나머지가 0일 때 사용할 이미지
-                "image1.jpg"   // 나머지가 1일 때 사용할 이미지
-            ];
-		
-	    var rss = [
-                "오늘의 자원지는 기름(Oil Field)",  // 나머지가 0일 때 사용할 이미지
-                "오늘의 자원지는 옥수수(Farmland)"   // 나머지가 1일 때 사용할 이미지
+                "image0.jpg",  // 0, 1일 사용할 이미지
+                "image1.jpg"   // 2, 3일 사용할 이미지
             ];
 
             var today = new Date();
             var day = today.getDate();
+            var period = Math.floor((day - 1) / 2) % images.length;
+            var selectedImage = images[period];
 
-            var remainder = day % 2;
-            var selectedImage = images[remainder];
-	    var selectedRss = rss[remainder];
+            // Open Graph 태그를 동적으로 생성
+            var head = document.getElementsByTagName('head')[0];
+            var ogTitle = document.createElement('meta');
+            ogTitle.setAttribute('property', 'og:title');
+            ogTitle.setAttribute('content', 'Dynamic Open Graph Image');
+            head.appendChild(ogTitle);
 
-	    document.getElementById("og-tit").setAttribute("content", today);
-            document.getElementById("og-desc").setAttribute("content", selectedRss);
-	    document.getElementById("og-image").setAttribute("content", selectedImage);
-        });
-    </script>    
+            var ogDescription = document.createElement('meta');
+            ogDescription.setAttribute('property', 'og:description');
+            ogDescription.setAttribute('content', 'This page dynamically changes the Open Graph image based on the date.');
+            head.appendChild(ogDescription);
 
-
-    <title>Open Graph Dynamic Image</title>
-
+            var ogImage = document.createElement('meta');
+            ogImage.setAttribute('property', 'og:image');
+            ogImage.setAttribute('content', selectedImage);
+            head.appendChild(ogImage);
+        })();
+    </script>
 </head>
 <body>
-    <h1>TW_3407신</h1>
+    <h1>Open Graph Image Example</h1>
     <p>This page's Open Graph image changes based on the date.</p>
-    <img id="main_img">
-	<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var images = [
-                "image0.jpg",  // 나머지가 0일 때 사용할 이미지
-                "image1.jpg"   // 나머지가 1일 때 사용할 이미지
-            ];
-
-            var today = new Date();
-            var day = today.getDate();
-
-            var remainder = day % 2;
-            var selectedImage = images[remainder];
-	   
-            document.getElementById("main_img").setAttribute("src", selectedImage);
-        });
-    </script>
 </body>
 </html>
