@@ -17,9 +17,12 @@
         avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNACSYFsiS1FNdb0N-4OW0ZB0CftFPJFw93w&s',
         content: '@everyone World Boss is up',
         allowed_mentions: {
-            "parse": ['everyone']
+            parse: ['everyone']
         },
-        embeds : [iamge:{url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNACSYFsiS1FNdb0N-4OW0ZB0CftFPJFw93w&s'}]
+        embeds: [{
+            image: {'url': 'https://i.imgur.com/ZGPxFN2.jpg'
+            }
+        }]
       }
 
       hook.send(JSON.stringify(content));
