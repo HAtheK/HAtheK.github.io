@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='de' dir='ltr'>
+
+<head>
+  <meta charset='utf-8'>
+  <title>Webhook</title>
+  <script>
+    function webhook() {
+      var hook = new XMLHttpRequest();
+
+      hook.open('POST', 'https://discord.com/api/webhooks/1272544419375222814/wbEQYdX8BgcW7qMPfLkyCjUbnaAbbYo5C79p6xUorhFgbaorIeNvcW8vwz9ecpKk1IVb');
+
+      hook.setRequestHeader('Content-type', 'application/json');
+
+      var content = {
+        username: 'Webhook Name',
+        avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNACSYFsiS1FNdb0N-4OW0ZB0CftFPJFw93w&s',
+        content: "World Boss is up'
+      }
+
+      hook.send(JSON.stringify(content));
+    }
+  </script>
+</head>
+
+<body onload="webhook()">
+
+  <form onsubmit='webhook();return false;'>
+    retry
+    <input type='submit' value='Send'>
+
+  </form>
+
+</body>
+
+</html>
